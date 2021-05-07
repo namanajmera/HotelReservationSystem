@@ -15,7 +15,7 @@ public class HotelReservation {
     }
 
     public int findMinimumPrice() {
-        int minPrice = hotelList.get(1).calculatePrice();
+        int minPrice = Integer.MAX_VALUE;
         for (Hotel hotel : hotelList) {
             int price = hotel.calculatePrice();
             if (price < minPrice)

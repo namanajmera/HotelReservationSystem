@@ -7,7 +7,8 @@ import java.time.format.DateTimeFormatter;
 public class Hotel {
     private String hotelName;
     private int rate;
-    private String startDate,endDate;
+    private int weekDaysRate, weekEndsRate;
+    private String startDate, endDate;
 
     public Hotel(String hotelName, int rate) {
         this.hotelName = hotelName;
@@ -21,20 +22,25 @@ public class Hotel {
         this.endDate = endDate;
     }
 
-    public String getHotelName() {
-        return hotelName;
+    public Hotel(String hotelName, int weekDaysRate, int weekEndsRate) {
+        this.hotelName = hotelName;
+        this.weekDaysRate = weekDaysRate;
+        this.weekEndsRate = weekEndsRate;
     }
 
-    public void setHotelName(String hotelName) {
-        this.hotelName = hotelName;
+    public String getHotelName() {
+        return hotelName;
     }
 
     public int getRate() {
         return rate;
     }
+    public int getWeekDaysRate() {
+        return weekDaysRate;
+    }
 
-    public void setRate(int rate) {
-        this.rate = rate;
+    public int getWeekEndsRate() {
+        return weekEndsRate;
     }
 
     public int calculateNumberOfDays(String startDate, String endDate) {
@@ -52,14 +58,20 @@ public class Hotel {
     public String toString() {
         return "Hotel{" +
                 "hotelName='" + hotelName + '\'' +
-                ", rate=" + rate +
+                ", weekDaysRate=" + weekDaysRate +
+                ", weekEndsRate=" + weekEndsRate +
+                ", startDate='" + startDate + '\'' +
+                ", endDate='" + endDate + '\'' +
                 '}';
     }
-    public void display()
-    {
+
+    public void display() {
         System.out.println("Hotel{" +
                 "hotelName='" + hotelName + '\'' +
-                ", rate=" + rate +
+                ", weekDaysRate=" + weekDaysRate +
+                ", weekEndsRate=" + weekEndsRate +
+                ", startDate='" + startDate + '\'' +
+                ", endDate='" + endDate + '\'' +
                 '}');
     }
 }
