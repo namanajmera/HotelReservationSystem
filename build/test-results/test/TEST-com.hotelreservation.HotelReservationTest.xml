@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.hotelreservation.HotelReservationTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-05-07T10:40:24" hostname="HACKERNAMAN" time="0.049">
+  <properties/>
+  <testcase name="givenHotelsWhenAddedShouldReturnTheCheapestHotel()" classname="com.hotelreservation.HotelReservationTest" time="0.049"/>
+  <system-out><![CDATA[Lakewood
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
