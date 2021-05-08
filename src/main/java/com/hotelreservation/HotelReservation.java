@@ -41,6 +41,7 @@ public class HotelReservation {
         hotelList.add(hotel);
     }
 
+    // Checking whether data is null or empty
     public void isEmptyOrNull(String data) throws CustomerDetailsException {
         if (data == null)
             throw new CustomerDetailsException(CustomerDetailsException.ExceptionType.ENTERED_NULL,
@@ -50,6 +51,7 @@ public class HotelReservation {
                     "Data can't be empty");
     }
 
+    // Checking the validity of date format
     public boolean isDateValid(String date) throws CustomerDetailsException {
         isEmptyOrNull(date);
         Pattern pattern = Pattern.compile(Date_Pattern);
@@ -59,6 +61,7 @@ public class HotelReservation {
         return true;
     }
 
+    // Checking the validity of customer type
     public boolean isCustomerTypeValid(String customerType) throws CustomerDetailsException {
         isEmptyOrNull(customerType);
         if (!(customerType.equals("Regular") | customerType.equals("Reward")))
@@ -67,18 +70,21 @@ public class HotelReservation {
         return true;
     }
 
+    // Converting the String into LocalDate
     public LocalDate formatDate(String date) throws CustomerDetailsException {
         isDateValid(date);
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("ddMMMyyyy");
         return LocalDate.parse(date, formatter);
     }
 
+    // Calculating the number of days to stay at Hotel
     public int calculateNumberOfDays(String startDate, String endDate) throws CustomerDetailsException {
         LocalDate localStartDate = formatDate(startDate);
         LocalDate localEndDate = formatDate(endDate);
         return Period.between(localStartDate, localEndDate).getDays() + 1;
     }
 
+    // Calculating the no of days of weekends in given date range
     public int noOfWeekends(String date) throws CustomerDetailsException {
         int count = 0;
         LocalDate localDate = formatDate(date);
@@ -91,6 +97,7 @@ public class HotelReservation {
         return count;
     }
 
+    // Calculating the price of stay at each hotel
     public int calculatePrice(Hotel hotel, String customerType) throws CustomerDetailsException {
         int nonWeekdays = noOfWeekends(startDate);
         int noOfWeekdays = calculateNumberOfDays(startDate, endDate) - nonWeekdays;
@@ -99,26 +106,31 @@ public class HotelReservation {
         return noOfWeekdays * hotel.getWeekdayRateForReward() + nonWeekdays * hotel.getWeekendRateForReward();
     }
 
+    // Finding the minimum price of stay
     public int findMinimumPrice() {
-        int minPrice = 	hotelList.stream().map(hotel -> {
+        int minPrice = hotelList.stream().map(hotel -> {
             try {
                 return calculatePrice(hotel, customerType);
             } catch (CustomerDetailsException e) {
                 return 0;
             }
-        }).min((x,y) -> x-y).get();
+        }).min((x, y) -> x - y).get();
         return minPrice;
     }
 
-    public String findTheCheapestHotel() throws CustomerDetailsException {
-        String hotelName = "";
-        for (Hotel hotel : hotelList) {
-            if (findMinimumPrice() == calculatePrice(hotel, customerType))
-                hotelName = hotelName + hotel.getHotelName() + " ";
-        }
+    // Finding the cheapest hotel
+    public String findTheCheapestHotel() {
+        String hotelName = hotelList.stream().filter(hotel -> {
+            try {
+                return findMinimumPrice() == calculatePrice(hotel, customerType);
+            } catch (CustomerDetailsException e) {
+                return false;
+            }
+        }).map(hotel -> hotel.getHotelName()).collect(Collectors.joining(", "));
         return hotelName;
     }
 
+    // Finding the best rated hotel from the list of cheapest hotels
     public String findTheCheapestBestRatedHotel() {
         Map<Integer, String> cheapestHostelWithRating = new TreeMap<>();
         cheapestHostelWithRating = hotelList.stream().filter(hotel -> {
@@ -133,20 +145,15 @@ public class HotelReservation {
         return lastEntry.getValue();
     }
 
+    // Finding the best rated hotel
     public String findBestRatedHotel() {
-        int maxRating = hotelList.get(0).getRating();
-        for (Hotel hotel : hotelList) {
-            int rating = hotel.getRating();
-            if (rating > maxRating)
-                maxRating = rating;
-        }
-        for (Hotel hotel : hotelList) {
-            if (maxRating == hotel.getRating())
-                return hotel.getHotelName();
-        }
-        return null;
+        int maxRating = hotelList.stream().map(hotel -> hotel.getRating()).max((x, y) -> x - y).get();
+        String hotelName = hotelList.stream().filter(hotel -> maxRating == hotel.getRating())
+                .map(hotel -> hotel.getHotelName()).findFirst().orElse(null);
+        return hotelName;
     }
 
+    // Printing the welcome message
     public void printWelcome() {
         System.out.println("Welcome to Hotel Reservation Program");
     }
