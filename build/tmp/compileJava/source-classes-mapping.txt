@@ -1,4 +1,7 @@
 com/hotelreservation/Hotel.java
  com.hotelreservation.Hotel
+com/hotelreservation/CustomerDetailsException.java
+ com.hotelreservation.CustomerDetailsException
+ com.hotelreservation.CustomerDetailsException$ExceptionType
 com/hotelreservation/HotelReservation.java
  com.hotelreservation.HotelReservation

@@ -1,6 +1,6 @@
 package com.hotelreservation;
 
-import org.junit.jupiter.api.Assertions;
+import org.junit.Assert;
 import org.junit.jupiter.api.Test;
 
 public class HotelTest {
@@ -10,7 +10,7 @@ public class HotelTest {
         boolean result = (hotel.getWeekdayRateForRegular() == 110) && (hotel.getWeekendRateForRegular() == 90)
                 && (hotel.getWeekdayRateForReward() == 80) && (hotel.getWeekendRateForReward() == 80)
                 && (hotel.getRating() == 3);
-        Assertions.assertTrue(result);
+        Assert.assertTrue(result);
     }
 
     @Test
@@ -19,7 +19,7 @@ public class HotelTest {
         boolean result = (hotel.getWeekdayRateForRegular() == 150) && (hotel.getWeekendRateForRegular() == 50)
                 && (hotel.getWeekdayRateForReward() == 110) && (hotel.getWeekendRateForReward() == 50)
                 && (hotel.getRating() == 4);
-        Assertions.assertTrue(result);
+        Assert.assertTrue(result);
     }
 
     @Test
@@ -28,6 +28,6 @@ public class HotelTest {
         boolean result = (hotel.getWeekdayRateForRegular() == 220) && (hotel.getWeekendRateForRegular() == 150)
                 && (hotel.getWeekdayRateForReward() == 100) && (hotel.getWeekendRateForReward() == 40)
                 && (hotel.getRating() == 5);
-        Assertions.assertTrue(result);
+        Assert.assertTrue(result);
     }
 }
