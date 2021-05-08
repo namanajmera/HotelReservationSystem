@@ -6,6 +6,7 @@ import java.time.Period;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
 import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 
 public class HotelReservation {
     // For simplicity, we have restricted our interest to the years 1900 – 2999.
@@ -98,13 +99,14 @@ public class HotelReservation {
         return noOfWeekdays * hotel.getWeekdayRateForReward() + nonWeekdays * hotel.getWeekendRateForReward();
     }
 
-    public int findMinimumPrice() throws CustomerDetailsException {
-        int minPrice = calculatePrice(hotelList.get(0), customerType);
-        for (Hotel hotel : hotelList) {
-            int price = calculatePrice(hotel, customerType);
-            if (price < minPrice)
-                minPrice = price;
-        }
+    public int findMinimumPrice() {
+        int minPrice = 	hotelList.stream().map(hotel -> {
+            try {
+                return calculatePrice(hotel, customerType);
+            } catch (CustomerDetailsException e) {
+                return 0;
+            }
+        }).min((x,y) -> x-y).get();
         return minPrice;
     }
 
@@ -117,13 +119,17 @@ public class HotelReservation {
         return hotelName;
     }
 
-    public String findTheCheapestBestRatedHotel() throws CustomerDetailsException {
-        NavigableMap<Integer, String> cheapestHostelWithRating = new TreeMap<>();
-        for (Hotel hotel : hotelList) {
-            if (findMinimumPrice() == calculatePrice(hotel, customerType))
-                cheapestHostelWithRating.put(hotel.getRating(), hotel.getHotelName());
-        }
-        Map.Entry<Integer, String> lastEntry = cheapestHostelWithRating.lastEntry();
+    public String findTheCheapestBestRatedHotel() {
+        Map<Integer, String> cheapestHostelWithRating = new TreeMap<>();
+        cheapestHostelWithRating = hotelList.stream().filter(hotel -> {
+            try {
+                return findMinimumPrice() == calculatePrice(hotel, customerType);
+            } catch (CustomerDetailsException e) {
+                return false;
+            }
+        }).collect(Collectors.toMap(hotel -> hotel.getRating(), hotel -> hotel.getHotelName()));
+        NavigableMap<Integer, String> cheapestHotel = new TreeMap<>(cheapestHostelWithRating);
+        Map.Entry<Integer, String> lastEntry = cheapestHotel.lastEntry();
         return lastEntry.getValue();
     }
 

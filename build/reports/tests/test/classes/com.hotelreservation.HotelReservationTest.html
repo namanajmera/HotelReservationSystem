@@ -41,7 +41,7 @@
 </td>
 <td>
 <div class="infoBox" id="duration">
-<div class="counter">0.050s</div>
+<div class="counter">0.048s</div>
 <p>duration</p>
 </div>
 </td>
@@ -74,8 +74,8 @@
 <h3 class="failures">givenHotels_WhenAddedForRegularCustomer_ShouldReturnTheBestRatedHotel()</h3>
 <span class="code">
 <pre>java.lang.NullPointerException: Cannot invoke &quot;com.hotelreservation.Hotel.getRating()&quot; because the return value of &quot;java.util.List.get(int)&quot; is null
-	at com.hotelreservation.HotelReservation.findBestRatedHotel(HotelReservation.java:131)
-	at com.hotelreservation.HotelReservationTest.givenHotels_WhenAddedForRegularCustomer_ShouldReturnTheBestRatedHotel(HotelReservationTest.java:178)
+	at com.hotelreservation.HotelReservation.findBestRatedHotel(HotelReservation.java:137)
+	at com.hotelreservation.HotelReservationTest.givenHotels_WhenAddedForRegularCustomer_ShouldReturnTheBestRatedHotel(HotelReservationTest.java:179)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:64)
 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -174,10 +174,27 @@
 <h3 class="failures">givenHotels_WhenAddedForRegularCustomer_ShouldReturnTheCheapestBestRatedHotel()</h3>
 <span class="code">
 <pre>java.lang.NullPointerException: Cannot invoke &quot;com.hotelreservation.Hotel.getWeekdayRateForRegular()&quot; because &quot;hotel&quot; is null
-	at com.hotelreservation.HotelReservation.calculatePrice(HotelReservation.java:97)
-	at com.hotelreservation.HotelReservation.findMinimumPrice(HotelReservation.java:102)
-	at com.hotelreservation.HotelReservation.findTheCheapestBestRatedHotel(HotelReservation.java:123)
-	at com.hotelreservation.HotelReservationTest.givenHotels_WhenAddedForRegularCustomer_ShouldReturnTheCheapestBestRatedHotel(HotelReservationTest.java:168)
+	at com.hotelreservation.HotelReservation.calculatePrice(HotelReservation.java:98)
+	at com.hotelreservation.HotelReservation.lambda$findMinimumPrice$0(HotelReservation.java:105)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:195)
+	at java.base/java.util.ArrayList$ArrayListSpliterator.forEachRemaining(ArrayList.java:1625)
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:484)
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:474)
+	at java.base/java.util.stream.ReduceOps$ReduceOp.evaluateSequential(ReduceOps.java:913)
+	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:234)
+	at java.base/java.util.stream.ReferencePipeline.reduce(ReferencePipeline.java:558)
+	at java.base/java.util.stream.ReferencePipeline.min(ReferencePipeline.java:599)
+	at com.hotelreservation.HotelReservation.findMinimumPrice(HotelReservation.java:109)
+	at com.hotelreservation.HotelReservation.lambda$findTheCheapestBestRatedHotel$2(HotelReservation.java:126)
+	at java.base/java.util.stream.ReferencePipeline$2$1.accept(ReferencePipeline.java:176)
+	at java.base/java.util.ArrayList$ArrayListSpliterator.forEachRemaining(ArrayList.java:1625)
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:484)
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:474)
+	at java.base/java.util.stream.ReduceOps$ReduceOp.evaluateSequential(ReduceOps.java:913)
+	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:234)
+	at java.base/java.util.stream.ReferencePipeline.collect(ReferencePipeline.java:578)
+	at com.hotelreservation.HotelReservation.findTheCheapestBestRatedHotel(HotelReservation.java:130)
+	at com.hotelreservation.HotelReservationTest.givenHotels_WhenAddedForRegularCustomer_ShouldReturnTheCheapestBestRatedHotel(HotelReservationTest.java:169)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:64)
 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -276,10 +293,27 @@
 <h3 class="failures">givenHotels_WhenAddedForRewardCustomer_ShouldReturnTheCheapestBestRatedHotel()</h3>
 <span class="code">
 <pre>java.lang.NullPointerException: Cannot invoke &quot;com.hotelreservation.Hotel.getWeekdayRateForReward()&quot; because &quot;hotel&quot; is null
-	at com.hotelreservation.HotelReservation.calculatePrice(HotelReservation.java:98)
-	at com.hotelreservation.HotelReservation.findMinimumPrice(HotelReservation.java:102)
-	at com.hotelreservation.HotelReservation.findTheCheapestBestRatedHotel(HotelReservation.java:123)
-	at com.hotelreservation.HotelReservationTest.givenHotels_WhenAddedForRewardCustomer_ShouldReturnTheCheapestBestRatedHotel(HotelReservationTest.java:188)
+	at com.hotelreservation.HotelReservation.calculatePrice(HotelReservation.java:99)
+	at com.hotelreservation.HotelReservation.lambda$findMinimumPrice$0(HotelReservation.java:105)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:195)
+	at java.base/java.util.ArrayList$ArrayListSpliterator.forEachRemaining(ArrayList.java:1625)
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:484)
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:474)
+	at java.base/java.util.stream.ReduceOps$ReduceOp.evaluateSequential(ReduceOps.java:913)
+	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:234)
+	at java.base/java.util.stream.ReferencePipeline.reduce(ReferencePipeline.java:558)
+	at java.base/java.util.stream.ReferencePipeline.min(ReferencePipeline.java:599)
+	at com.hotelreservation.HotelReservation.findMinimumPrice(HotelReservation.java:109)
+	at com.hotelreservation.HotelReservation.lambda$findTheCheapestBestRatedHotel$2(HotelReservation.java:126)
+	at java.base/java.util.stream.ReferencePipeline$2$1.accept(ReferencePipeline.java:176)
+	at java.base/java.util.ArrayList$ArrayListSpliterator.forEachRemaining(ArrayList.java:1625)
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:484)
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:474)
+	at java.base/java.util.stream.ReduceOps$ReduceOp.evaluateSequential(ReduceOps.java:913)
+	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:234)
+	at java.base/java.util.stream.ReferencePipeline.collect(ReferencePipeline.java:578)
+	at com.hotelreservation.HotelReservation.findTheCheapestBestRatedHotel(HotelReservation.java:130)
+	at com.hotelreservation.HotelReservationTest.givenHotels_WhenAddedForRewardCustomer_ShouldReturnTheCheapestBestRatedHotel(HotelReservationTest.java:189)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:64)
 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -378,10 +412,19 @@
 <h3 class="failures">givenHotels_WhenAdded_ShouldReturnTheCheapestHotel()</h3>
 <span class="code">
 <pre>java.lang.NullPointerException: Cannot invoke &quot;com.hotelreservation.Hotel.getWeekdayRateForRegular()&quot; because &quot;hotel&quot; is null
-	at com.hotelreservation.HotelReservation.calculatePrice(HotelReservation.java:97)
-	at com.hotelreservation.HotelReservation.findMinimumPrice(HotelReservation.java:102)
-	at com.hotelreservation.HotelReservation.findTheCheapestHotel(HotelReservation.java:114)
-	at com.hotelreservation.HotelReservationTest.givenHotels_WhenAdded_ShouldReturnTheCheapestHotel(HotelReservationTest.java:158)
+	at com.hotelreservation.HotelReservation.calculatePrice(HotelReservation.java:98)
+	at com.hotelreservation.HotelReservation.lambda$findMinimumPrice$0(HotelReservation.java:105)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:195)
+	at java.base/java.util.ArrayList$ArrayListSpliterator.forEachRemaining(ArrayList.java:1625)
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:484)
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:474)
+	at java.base/java.util.stream.ReduceOps$ReduceOp.evaluateSequential(ReduceOps.java:913)
+	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:234)
+	at java.base/java.util.stream.ReferencePipeline.reduce(ReferencePipeline.java:558)
+	at java.base/java.util.stream.ReferencePipeline.min(ReferencePipeline.java:599)
+	at com.hotelreservation.HotelReservation.findMinimumPrice(HotelReservation.java:109)
+	at com.hotelreservation.HotelReservation.findTheCheapestHotel(HotelReservation.java:116)
+	at com.hotelreservation.HotelReservationTest.givenHotels_WhenAdded_ShouldReturnTheCheapestHotel(HotelReservationTest.java:159)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:64)
 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -508,7 +551,7 @@
 </tr>
 <tr>
 <td class="success">givenEndDate_WhenInvalid_ShouldReturnEnterValidDate()</td>
-<td class="success">0.001s</td>
+<td class="success">0s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
@@ -528,7 +571,7 @@
 </tr>
 <tr>
 <td class="failures">givenHotels_WhenAddedForRewardCustomer_ShouldReturnTheCheapestBestRatedHotel()</td>
-<td class="failures">0.019s</td>
+<td class="failures">0.017s</td>
 <td class="failures">failed</td>
 </tr>
 <tr>
@@ -538,7 +581,7 @@
 </tr>
 <tr>
 <td class="success">givenStartDate_WhenInvalid_ShouldReturnEnterValidDate()</td>
-<td class="success">0s</td>
+<td class="success">0.001s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
@@ -558,12 +601,12 @@
 </tr>
 <tr>
 <td class="success">givendStartDate_WhenEmpty_ShouldReturnDataCannotBeEmpty()</td>
-<td class="success">0s</td>
+<td class="success">0.001s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">givendStartDate_WhenNull_ShouldReturnDataCannotBeNull()</td>
-<td class="success">0.001s</td>
+<td class="success">0s</td>
 <td class="success">passed</td>
 </tr>
 </table>
@@ -576,7 +619,7 @@
 <input id="line-wrapping-toggle" type="checkbox" autocomplete="off"/>
 </label>
 </div>Generated by 
-<a href="http://www.gradle.org">Gradle 6.8</a> at 08-May-2021, 8:54:56 pm</p>
+<a href="http://www.gradle.org">Gradle 6.8</a> at 08-May-2021, 9:08:13 pm</p>
 </div>
 </div>
 </body>
