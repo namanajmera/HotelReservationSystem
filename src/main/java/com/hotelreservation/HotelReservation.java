@@ -24,7 +24,7 @@ public class HotelReservation {
         String hotelName = "";
         for (Hotel hotel : hotelList) {
             if (findMinimumPrice() == hotel.calculatePrice())
-                hotelName= hotelName+ hotel.getHotelName()+" ";
+                hotelName = hotelName + hotel.getHotelName() + " ";
         }
         return hotelName;
     }

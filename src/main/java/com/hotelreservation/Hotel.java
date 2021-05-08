@@ -7,9 +7,16 @@ import java.time.format.DateTimeFormatter;
 
 public class Hotel {
     private String hotelName;
-    private int rate;
     private int weekdayRate, weekendRate;
     private String startDate, endDate;
+    private int rating;
+
+    public Hotel(String hotelName, int weekdayRate, int weekendRate, int rating) {
+        this.hotelName = hotelName;
+        this.weekdayRate = weekdayRate;
+        this.weekendRate = weekendRate;
+        this.rating = rating;
+    }
 
     public Hotel(String hotelName, int weekdayRate, int weekendRate, String startDate, String endDate) {
         this.hotelName = hotelName;
@@ -31,8 +38,8 @@ public class Hotel {
         return hotelName;
     }
 
-    public int getRate() {
-        return rate;
+    public int getRating() {
+        return rating;
     }
 
     public int noOfWeekends(String date) {
