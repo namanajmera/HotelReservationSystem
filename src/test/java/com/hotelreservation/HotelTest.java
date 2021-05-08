@@ -5,23 +5,29 @@ import org.junit.jupiter.api.Test;
 
 public class HotelTest {
     @Test
-    public void givenLakewoodRateDetailsWhenAddedShouldReturnTrue() {
-        Hotel hotel = new Hotel("Lakewood", 110, 90, 3);
-        boolean result = (hotel.getWeekdayRate() == 110) && (hotel.getWeekendRate() == 90) && (hotel.getRating() == 3);
+    public void givenLakewoodDetails_WhenAdded_ShouldPassTheDeatils() {
+        Hotel hotel = new Hotel("Lakewood", 110, 90, 80, 80, 3);
+        boolean result = (hotel.getWeekdayRateForRegular() == 110) && (hotel.getWeekendRateForRegular() == 90)
+                && (hotel.getWeekdayRateForReward() == 80) && (hotel.getWeekendRateForReward() == 80)
+                && (hotel.getRating() == 3);
         Assertions.assertTrue(result);
     }
 
     @Test
-    public void givenBridgewoodRateDetailsWhenAddedShouldReturnTrue() {
-        Hotel hotel = new Hotel("Bridgewood", 150, 50, 4);
-        boolean result = (hotel.getWeekdayRate() == 150) && (hotel.getWeekendRate() == 50) && (hotel.getRating() == 4);
+    public void givenBridgewoodDetails_WhenAdded_ShouldPassTheDeatils() {
+        Hotel hotel = new Hotel("Bridgewood", 150, 50, 110, 50, 4);
+        boolean result = (hotel.getWeekdayRateForRegular() == 150) && (hotel.getWeekendRateForRegular() == 50)
+                && (hotel.getWeekdayRateForReward() == 110) && (hotel.getWeekendRateForReward() == 50)
+                && (hotel.getRating() == 4);
         Assertions.assertTrue(result);
     }
 
     @Test
-    public void givenRidgewoodRateDetailsWhenAddedShouldReturnTrue() {
-        Hotel hotel = new Hotel("Ridgewood", 220, 150, 5);
-        boolean result = (hotel.getWeekdayRate() == 220) && (hotel.getWeekendRate() == 150) && (hotel.getRating() == 5);
+    public void givenRidgewoodDetails_WhenAdded_ShouldPassTheDeatils() {
+        Hotel hotel = new Hotel("Ridgewood", 220, 150, 100, 40, 5);
+        boolean result = (hotel.getWeekdayRateForRegular() == 220) && (hotel.getWeekendRateForRegular() == 150)
+                && (hotel.getWeekdayRateForReward() == 100) && (hotel.getWeekendRateForReward() == 40)
+                && (hotel.getRating() == 5);
         Assertions.assertTrue(result);
     }
 }
