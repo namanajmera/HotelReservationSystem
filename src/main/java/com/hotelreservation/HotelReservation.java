@@ -4,10 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class HotelReservation {
-    public void printWelcome() {
-        System.out.println("Welcome to Hotel Reservation System.");
-    }
-
     public List<Hotel> hotelList = new ArrayList<>();
 
     public void addHotelToHotelReservation(Hotel hotel) {
@@ -15,7 +11,7 @@ public class HotelReservation {
     }
 
     public int findMinimumPrice() {
-        int minPrice = Integer.MAX_VALUE;
+        int minPrice = hotelList.get(0).calculatePrice();
         for (Hotel hotel : hotelList) {
             int price = hotel.calculatePrice();
             if (price < minPrice)
@@ -25,12 +21,15 @@ public class HotelReservation {
     }
 
     public String findTheCheapestHotel() {
+        String hotelName = "";
         for (Hotel hotel : hotelList) {
             if (findMinimumPrice() == hotel.calculatePrice())
-                return hotel.getHotelName();
+                hotelName= hotelName+ hotel.getHotelName()+" ";
         }
-        return null;
+        return hotelName;
     }
 
-
+    public void printWelcome() {
+        System.out.println("Welcome to Hotel Reservation Program");
+    }
 }

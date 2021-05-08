@@ -1,4 +1,2 @@
 com/hotelreservation/HotelReservationTest.java
  com.hotelreservation.HotelReservationTest
-com/hotelreservation/HotelTest.java
- com.hotelreservation.HotelTest

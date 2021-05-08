@@ -1,5 +1,6 @@
 package com.hotelreservation;
 
+import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.Period;
 import java.time.format.DateTimeFormatter;
@@ -7,25 +8,23 @@ import java.time.format.DateTimeFormatter;
 public class Hotel {
     private String hotelName;
     private int rate;
-    private int weekDaysRate, weekEndsRate;
+    private int weekdayRate, weekendRate;
     private String startDate, endDate;
 
-    public Hotel(String hotelName, int rate) {
+    public Hotel(String hotelName, int weekdayRate, int weekendRate, String startDate, String endDate) {
         this.hotelName = hotelName;
-        this.rate = rate;
-    }
-
-    public Hotel(String hotelName, int rate, String startDate, String endDate) {
-        this.hotelName = hotelName;
-        this.rate = rate;
+        this.weekdayRate = weekdayRate;
+        this.weekendRate = weekendRate;
         this.startDate = startDate;
         this.endDate = endDate;
     }
 
-    public Hotel(String hotelName, int weekDaysRate, int weekEndsRate) {
-        this.hotelName = hotelName;
-        this.weekDaysRate = weekDaysRate;
-        this.weekEndsRate = weekEndsRate;
+    public int getWeekdayRate() {
+        return weekdayRate;
+    }
+
+    public int getWeekendRate() {
+        return weekendRate;
     }
 
     public String getHotelName() {
@@ -35,12 +34,18 @@ public class Hotel {
     public int getRate() {
         return rate;
     }
-    public int getWeekDaysRate() {
-        return weekDaysRate;
-    }
 
-    public int getWeekEndsRate() {
-        return weekEndsRate;
+    public int noOfWeekends(String date) {
+        int count = 0;
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("ddMMMyyyy");
+        LocalDate localDate = LocalDate.parse(date, formatter);
+        int noOfDays = calculateNumberOfDays(startDate, endDate);
+        for (int day = 0; day <= noOfDays; day++) {
+            if (localDate.getDayOfWeek() == DayOfWeek.SATURDAY || localDate.getDayOfWeek() == DayOfWeek.SUNDAY)
+                count++;
+            localDate = localDate.plusDays(1);
+        }
+        return count;
     }
 
     public int calculateNumberOfDays(String startDate, String endDate) {
@@ -51,27 +56,8 @@ public class Hotel {
     }
 
     public int calculatePrice() {
-        return calculateNumberOfDays(startDate, endDate) * rate;
-    }
-
-    @Override
-    public String toString() {
-        return "Hotel{" +
-                "hotelName='" + hotelName + '\'' +
-                ", weekDaysRate=" + weekDaysRate +
-                ", weekEndsRate=" + weekEndsRate +
-                ", startDate='" + startDate + '\'' +
-                ", endDate='" + endDate + '\'' +
-                '}';
-    }
-
-    public void display() {
-        System.out.println("Hotel{" +
-                "hotelName='" + hotelName + '\'' +
-                ", weekDaysRate=" + weekDaysRate +
-                ", weekEndsRate=" + weekEndsRate +
-                ", startDate='" + startDate + '\'' +
-                ", endDate='" + endDate + '\'' +
-                '}');
+        int nonWeekdays = noOfWeekends(startDate);
+        int noOfWeekdays = calculateNumberOfDays(startDate, endDate) + 1 - nonWeekdays;
+        return noOfWeekdays * weekdayRate + nonWeekdays * weekendRate;
     }
 }
