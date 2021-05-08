@@ -19,6 +19,20 @@ public class HotelReservation {
         return minPrice;
     }
 
+    public String findBestRatedHotel() {
+        int maxRating = hotelList.get(0).getRating();
+        for (Hotel hotel : hotelList) {
+            int rating = hotel.getRating();
+            if (rating > maxRating)
+                maxRating = rating;
+        }
+        for (Hotel hotel : hotelList) {
+            if (maxRating == hotel.getRating())
+                return hotel.getHotelName();
+        }
+        return null;
+    }
+
     public String findTheCheapestBestRatedHotel() {
         NavigableMap<Integer, String> cheapestHostelWithRating = new TreeMap<>();
         for (Hotel hotel : hotelList) {
