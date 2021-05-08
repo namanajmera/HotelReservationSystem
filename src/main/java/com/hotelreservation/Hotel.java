@@ -11,19 +11,20 @@ public class Hotel {
     private String startDate, endDate;
     private int rating;
 
+    public Hotel(String hotelName, int weekdayRate, int weekendRate, int rating, String startDate, String endDate) {
+        this.hotelName = hotelName;
+        this.weekdayRate = weekdayRate;
+        this.weekendRate = weekendRate;
+        this.rating = rating;
+        this.startDate = startDate;
+        this.endDate = endDate;
+    }
+
     public Hotel(String hotelName, int weekdayRate, int weekendRate, int rating) {
         this.hotelName = hotelName;
         this.weekdayRate = weekdayRate;
         this.weekendRate = weekendRate;
         this.rating = rating;
-    }
-
-    public Hotel(String hotelName, int weekdayRate, int weekendRate, String startDate, String endDate) {
-        this.hotelName = hotelName;
-        this.weekdayRate = weekdayRate;
-        this.weekendRate = weekendRate;
-        this.startDate = startDate;
-        this.endDate = endDate;
     }
 
     public int getWeekdayRate() {

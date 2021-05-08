@@ -1,7 +1,6 @@
 package com.hotelreservation;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class HotelReservation {
     public List<Hotel> hotelList = new ArrayList<>();
@@ -20,13 +19,14 @@ public class HotelReservation {
         return minPrice;
     }
 
-    public String findTheCheapestHotel() {
-        String hotelName = "";
+    public String findTheCheapestBestRatedHotel() {
+        NavigableMap<Integer, String> cheapestHostelWithRating = new TreeMap<>();
         for (Hotel hotel : hotelList) {
             if (findMinimumPrice() == hotel.calculatePrice())
-                hotelName = hotelName + hotel.getHotelName() + " ";
+                cheapestHostelWithRating.put(hotel.getRating(), hotel.getHotelName());
         }
-        return hotelName;
+        Map.Entry<Integer, String> lastEntry = cheapestHostelWithRating.lastEntry();
+        return lastEntry.getValue();
     }
 
     public void printWelcome() {
